@@ -2,7 +2,7 @@ import WidgetKit
 import SwiftUI
 
 struct YearlyCalendarWidget: Widget {
-    let kind: String = "com.sirishkumar.yearly-cal-widget.calendar"
+    let kind: String = "com.sirishdarbha.yearly-cal-widget.calendar"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: CalendarTimelineProvider()) { entry in

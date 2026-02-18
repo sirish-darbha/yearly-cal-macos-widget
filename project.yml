@@ -1,6 +1,6 @@
 name: YearlyCalWidget
 options:
-  bundleIdPrefix: com.sirishkumar
+  bundleIdPrefix: com.sirishdarbha
   deploymentTarget:
     macOS: "15.0"
   generateEmptyDirectories: true
@@ -21,7 +21,7 @@ targets:
       - path: Shared
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.sirishkumar.yearly-cal-widget
+        PRODUCT_BUNDLE_IDENTIFIER: com.sirishdarbha.yearly-cal-widget
         PRODUCT_NAME: "Yearly Calendar"
         PRODUCT_MODULE_NAME: YearlyCalWidget
         CODE_SIGN_ENTITLEMENTS: YearlyCalWidget/YearlyCalWidget.entitlements
@@ -37,7 +37,7 @@ targets:
       - path: Shared
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.sirishkumar.yearly-cal-widget.CalendarWidgetExtension
+        PRODUCT_BUNDLE_IDENTIFIER: com.sirishdarbha.yearly-cal-widget.CalendarWidgetExtension
         PRODUCT_NAME: CalendarWidgetExtension
         CODE_SIGN_ENTITLEMENTS: CalendarWidgetExtension/CalendarWidgetExtension.entitlements
         INFOPLIST_FILE: CalendarWidgetExtension/Info.plist
@@ -55,7 +55,7 @@ targets:
       - target: YearlyCalWidget
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.sirishkumar.yearly-cal-widget.tests
+        PRODUCT_BUNDLE_IDENTIFIER: com.sirishdarbha.yearly-cal-widget.tests
         PRODUCT_NAME: YearlyCalWidgetTests
         GENERATE_INFOPLIST_FILE: true
         TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Yearly Calendar.app/Contents/MacOS/Yearly Calendar"
