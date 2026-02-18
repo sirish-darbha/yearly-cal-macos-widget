@@ -23,6 +23,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.sirishkumar.yearly-cal-widget
         PRODUCT_NAME: "Yearly Calendar"
+        PRODUCT_MODULE_NAME: YearlyCalWidget
         CODE_SIGN_ENTITLEMENTS: YearlyCalWidget/YearlyCalWidget.entitlements
         INFOPLIST_FILE: YearlyCalWidget/Info.plist
     dependencies:
@@ -50,12 +51,12 @@ targets:
     platform: macOS
     sources:
       - path: Tests
-      - path: Shared
     dependencies:
       - target: YearlyCalWidget
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.sirishkumar.yearly-cal-widget.tests
         PRODUCT_NAME: YearlyCalWidgetTests
+        GENERATE_INFOPLIST_FILE: true
         TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Yearly Calendar.app/Contents/MacOS/Yearly Calendar"
         BUNDLE_LOADER: "$(TEST_HOST)"
