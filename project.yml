@@ -1,0 +1,61 @@
+name: YearlyCalWidget
+options:
+  bundleIdPrefix: com.sirishkumar
+  deploymentTarget:
+    macOS: "15.0"
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MACOSX_DEPLOYMENT_TARGET: "15.0"
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_HARDENED_RUNTIME: true
+
+targets:
+  YearlyCalWidget:
+    type: application
+    platform: macOS
+    sources:
+      - path: YearlyCalWidget
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.sirishkumar.yearly-cal-widget
+        PRODUCT_NAME: "Yearly Calendar"
+        CODE_SIGN_ENTITLEMENTS: YearlyCalWidget/YearlyCalWidget.entitlements
+        INFOPLIST_FILE: YearlyCalWidget/Info.plist
+    dependencies:
+      - target: CalendarWidgetExtension
+
+  CalendarWidgetExtension:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: CalendarWidgetExtension
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.sirishkumar.yearly-cal-widget.CalendarWidgetExtension
+        PRODUCT_NAME: CalendarWidgetExtension
+        CODE_SIGN_ENTITLEMENTS: CalendarWidgetExtension/CalendarWidgetExtension.entitlements
+        INFOPLIST_FILE: CalendarWidgetExtension/Info.plist
+        LD_RUNPATH_SEARCH_PATHS:
+          - "$(inherited)"
+          - "@executable_path/../Frameworks"
+          - "@executable_path/../../../../Frameworks"
+
+  YearlyCalWidgetTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: Tests
+      - path: Shared
+    dependencies:
+      - target: YearlyCalWidget
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.sirishkumar.yearly-cal-widget.tests
+        PRODUCT_NAME: YearlyCalWidgetTests
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Yearly Calendar.app/Contents/MacOS/Yearly Calendar"
+        BUNDLE_LOADER: "$(TEST_HOST)"
