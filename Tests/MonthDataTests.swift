@@ -26,8 +26,10 @@ final class MonthDataTests: XCTestCase {
     func testLastNonNilCellIsLastDay() {
         let data = service.yearData(for: 2026, today: DateComponents(year: 2026, month: 1, day: 1))
         for month in data.months {
-            let lastDay = month.weeks.last!.compactMap { $0 }.last
-            XCTAssertNotNil(lastDay, "\(month.name) last week has no days")
+            // Months are padded to 6 rows; find the last row that contains any day
+            let lastNonEmptyWeek = month.weeks.last(where: { $0.contains(where: { $0 != nil }) })
+            let lastDay = lastNonEmptyWeek?.compactMap { $0 }.last
+            XCTAssertNotNil(lastDay, "\(month.name) has no non-nil days")
             XCTAssertEqual(lastDay?.dayNumber, month.numberOfDays, "\(month.name) last day mismatch")
         }
     }

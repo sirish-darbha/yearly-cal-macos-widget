@@ -60,6 +60,11 @@ struct LocalCalendarService: CalendarDataProvider {
             weeks.append(currentWeek)
         }
 
+        // Pad to always 6 rows for consistent month height across all quarters
+        while weeks.count < 6 {
+            weeks.append(Array(repeating: nil, count: 7))
+        }
+
         return weeks
     }
 }

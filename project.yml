@@ -60,3 +60,12 @@ targets:
         GENERATE_INFOPLIST_FILE: true
         TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Yearly Calendar.app/Contents/MacOS/Yearly Calendar"
         BUNDLE_LOADER: "$(TEST_HOST)"
+
+schemes:
+  YearlyCalWidgetTests:
+    build:
+      targets:
+        YearlyCalWidgetTests: test
+    test:
+      targets:
+        - YearlyCalWidgetTests
