@@ -15,15 +15,18 @@ struct DayCellView: View {
                 .hidden()
 
             if isToday {
-                Circle()
-                    .fill(CalendarTheme.todayBackground)
-                    .aspectRatio(1, contentMode: .fit)
+                Rectangle()
+                    .stroke(Color.red, lineWidth: 1)
+                    .frame(
+                        width: CalendarTheme.dayFontSize * 1.936,
+                        height: CalendarTheme.dayFontSize * 1.2
+                    )
             }
 
             if let day {
                 Text(verbatim: String(day.dayNumber))
-                    .font(isToday ? CalendarTheme.dayFontToday : CalendarTheme.dayFont)
-                    .foregroundStyle(isToday ? CalendarTheme.todayForeground : .primary)
+                    .font(isToday ? .system(size: CalendarTheme.dayFontSize, weight: .bold) : CalendarTheme.dayFont)
+                    .foregroundStyle(.primary)
             }
         }
         .frame(maxWidth: .infinity)
